@@ -12,10 +12,10 @@ public class Hello {
 	private int id;
 	private String message;
 	public int getId() {
-		return id;
+		return this.id;
 	}
 	public void setId(int id) {
-		this.id = id;
+		this.id = this.id;
 	}
 	public String getMessage() {
 		return message;
