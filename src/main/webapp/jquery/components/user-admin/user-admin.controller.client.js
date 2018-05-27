@@ -4,15 +4,13 @@
 
     var tbody;
     var template;
+    var userService = new userServiceClient();
 
     function main() {
         tbody = $('#tbody');
         template = $('.userTemplate');
         $('#createUser').click(createUser);
-        var promise = fetch('http://localhost:8080/api/user');
-        promise.then(function(response){
-            return response.json();
-        }).then(renderUser);
+        findAllUsers();
     }
 
     function createUser(){
@@ -35,13 +33,15 @@
             'phone': phone,
             'dateOfBirth': dob
         }
-        fetch('http://localhost:8080/api/user',{
-            method: 'post',
-            body: JSON.stringify(user),
-            headers: {
-                'content-type': 'application/json'
-            }
-        });
+        userService.createUser(user).then(findAllUsers());
+        
+    }
+
+    function findAllUsers() {
+        var promise = fetch('http://localhost:8080/api/user');
+        promise.then(function(response){
+            return response.json();
+        }).then(renderUser);
     }
 
     function renderUser(users) {
