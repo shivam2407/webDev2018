@@ -7,7 +7,7 @@
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
 	    crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-	    crossorigin="anonymous">
+		crossorigin="anonymous">
 </head>
 
 <body>
@@ -21,45 +21,64 @@
 					<th>First Name</th>
 					<th>Last Name</th>
 					<th>Role</th>
+					<th>DoB</th>
+					<th>Phone</th>
+					<th>Email</th>
 					<th></th>
 					<th></th>
 					<th></th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="tbody">
 				<tr>
 					<td>
-						<input class="form-control" placeholder="joe">
+						<input id="fetchUsername" class="form-control" placeholder="Username">
 					</td>
 					<td>
-						<input class="form-control" type="password">
+						<input id="fetchPassword" class="form-control" type="password">
 					</td>
 					<td>
-						<input class="form-control" placeholder="first name">
+						<input id="fetchFirstName" class="form-control" placeholder="first name">
 					</td>
 					<td>
-						<input class="form-control" placeholder="last name">
+						<input id="fetchLastName" class="form-control" placeholder="last name">
+					</td>
+					<td>
+						<input id="fetchRole" class="form-control" placeholder="Role">
+					</td>
+					<td>
+						<input id="fetchDOB" type="date" class="form-control" placeholder="DoB">
+					</td>
+					<td>
+						<input id="fetchPhone" class="form-control" placeholder="Phone">
+					</td>
+					<td>
+						<input id="fetchEmail" class="form-control" placeholder="Email">
 					</td>
 					<td>
 						<i class="fas fa-search fa-2x"></i>
 					</td>
 					<td>
-						<i class="fas fa-plus fa-2x"></i>
+						<i id="createUser" class="fas fa-plus fa-2x"></i>
 					</td>
 					<td>
 						<i class="fas fa-check fa-2x"></i>
 					</td>
 				</tr>
-				<tr class="userTemplate">
-					<td>Shivam2407</td>
-					<td>******</td>
-					<td>Shivam</td>
-					<td>Rawat</td>
+				<tr class="userTemplate" id="">
+					<td class="username">Shivam2407</td>
+					<td class="password">******</td>
+					<td class="firstname">Shivam</td>
+					<td class="lastname">Rawat</td>
+					<td class="role">Role</td>
+					<td class="dob">DoB</td>
+					<td class="phone">Phone</td>
+					<td class="email">Email</td>
 					<td></td>
-					<td>
+					<td id="dlt">
 						<i class="fas fa-times fa-2x"></i>
 					</td>
-					<td>
+					<td id="edit">
 						<i class="fas fa-pencil-alt fa-2x"></i>
 					</td>
 				</tr>

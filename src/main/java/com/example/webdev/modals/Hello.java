@@ -15,7 +15,7 @@ public class Hello {
 		return this.id;
 	}
 	public void setId(int id) {
-		this.id = this.id;
+		this.id = id;
 	}
 	public String getMessage() {
 		return message;
