@@ -11,11 +11,19 @@ function userServiceClient() {
     var self = this;
 
     function register() {
-
+        
     }
 
-    function login() {
-
+    function login(username, password) {
+        return fetch(self.url + '/login', {
+            method: 'post',
+            body: JSON.stringify({'username': username, 'password': password}),
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(function(response) {
+            return response.json();
+        });
     }
 
     function updateUser(user, callback) {

@@ -5,6 +5,7 @@
     var firstname, lastname;
     var role, dateOfBirth;
     var email, phone;
+    var userId;
     var userService = new userServiceClient();
 
     function main() {
@@ -16,7 +17,9 @@
         dateOfBirth = $('#dateOfBirth');
         email = $('#email');
         phone = $('#phone');
-        findUserById(2);
+        var url = new URL(window.location.href);
+        userId = url.searchParams.get('userId');
+        findUserById(userId);
         $('#update').click(updateUser);
     }
 
@@ -37,7 +40,7 @@
 
     function updateUser(){
         var user = new User();
-        user.setId(2);
+        user.setId(userId);
         user.setUserName(username.val());
         user.setPassword(password.val());
         user.setFirstName(firstname.val());
