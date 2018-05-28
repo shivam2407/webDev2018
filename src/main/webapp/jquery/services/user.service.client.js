@@ -1,8 +1,15 @@
 function userServiceClient() {
     this.createUser = createUser;
     this.findAllUsers = findAllUsers;
+    this.deleteUser = deleteUser;
     this.url = 'http://localhost:8080/api/user';
     var self = this;
+
+    function deleteUser(userId) {
+        return fetch(self.url + '/' + userId, {
+                method: 'delete'
+            });
+    }
 
     function findAllUsers() {
         return fetch(self.url)
@@ -12,7 +19,6 @@ function userServiceClient() {
     }
 
     function createUser(user) {
-        console.log('Inside user2', user);
         return fetch(self.url, {
             method: 'post',
             body: JSON.stringify(user),

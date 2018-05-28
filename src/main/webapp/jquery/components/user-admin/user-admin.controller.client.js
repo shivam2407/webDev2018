@@ -28,8 +28,13 @@
         var email = $('#fetchEmail').val();
 
         var user = new User(username,password,firstname,lastname,role,phone,email,dob);
-        userService.createUser(user).then(findAllUsers());
+        userService.createUser(user).then(findAllUsers);
 
+    }
+
+    function deleteUser(event) {
+        const deleteId = $(event.currentTarget).parent().parent().attr('id');
+        userService.deleteUser(deleteId).then(findAllUsers);
     }
 
 
@@ -39,6 +44,7 @@
         for (var i = 0; i < users.length; i++) {
             var user = users[i];
             var clone = template.clone();
+            clone.find('.delete').click(deleteUser);
             clone.find('.username').html(user.username);
             clone.find('.password').html(user.password);
             clone.find('.firstname').html(user.firstName);
