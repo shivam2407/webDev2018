@@ -5,11 +5,29 @@ function userServiceClient() {
     this.findUserById = findUserById;
     this.deleteUser = deleteUser;
     this.updateUser = updateUser;
+    this.register = register;
+    this.login = login;
     this.url = 'http://localhost:8080/api';
     var self = this;
 
-    function updateUser(userId, user, callback) {
+    function register() {
 
+    }
+
+    function login() {
+
+    }
+
+    function updateUser(user, callback) {
+        return fetch(self.url + '/user', {
+            method: 'put',
+            body: JSON.stringify(user),
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(function(response) {
+            return response.json();
+        });
     }
 
     function findUserById(id, callback) {

@@ -30,15 +30,41 @@ public class UserServices {
 		
 	}
 	
-	@PutMapping("api/user/{userId}")
-	public void updateUser(@PathVariable("userId") int id, @RequestBody User user) {
+	@PutMapping("api/user")
+	public boolean updateUser(@RequestBody User user) {
+		Optional<User> data = userRepository.findById(user.getId());
+		if(data.isPresent()) {
+			User oldUser = data.get();
+			oldUser.setPassword(user.getPassword());
+			oldUser.setFirstName(user.getFirstName());
+			oldUser.setLastName(user.getLastName());
+			oldUser.setEmail(user.getEmail());
+			oldUser.setDateOfBirth(user.getDateOfBirth());
+			oldUser.setPhone(user.getPhone());
+			userRepository.save(oldUser);
+			return true;
+		}
+		return false;
 		
 	}
+	
+	@PostMapping("/api/register")
+	public User register(@RequestBody User user, HttpSession session) { 
+			return null;
+	}
+
+
+	@PostMapping("/api/login")
+	public User login(@RequestBody User user, HttpSession session) {	
+		return null;
+	}
+	
 	
 	@PostMapping("/api/user")
 	public User createUser(@RequestBody User user) {
 		return userRepository.save(user);
 	}
+	
 	
 	@DeleteMapping("/api/user/{userId}")
 	public void deleteUser(@PathVariable("userId") int id) {
