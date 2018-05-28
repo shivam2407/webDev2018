@@ -14,7 +14,7 @@
     }
 
     function findAllUsers() {
-        userService.findAllUsers().then(renderUser);
+        userService.findAllUsers().then(renderUsers);
     }
 
     function createUser() {
@@ -27,7 +27,7 @@
         var phone = $('#fetchPhone').val();
         var email = $('#fetchEmail').val();
 
-        var user = new User(username,password,firstname,lastname,role,phone,email,dob);
+        var user = new User(username, password, firstname, lastname, role, phone, email, dob);
         userService.createUser(user).then(findAllUsers);
 
     }
@@ -37,9 +37,24 @@
         userService.deleteUser(deleteId).then(findAllUsers);
     }
 
+    function findUserById() {
+
+    }
+
+    function selectUser() {
+
+    }
+
+    function updateUser() {
+
+    }
+
+    function renderUser(user) {
+
+    }
 
 
-    function renderUser(users) {
+    function renderUsers(users) {
         tbody.empty();
         for (var i = 0; i < users.length; i++) {
             var user = users[i];
