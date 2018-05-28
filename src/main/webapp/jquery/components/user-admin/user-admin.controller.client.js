@@ -13,7 +13,11 @@
         findAllUsers();
     }
 
-    function createUser(){
+    function findAllUsers() {
+        userService.findAllUsers().then(renderUser);
+    }
+
+    function createUser() {
         var username = $('#fetchUsername').val();
         var password = $('#fetchPassword').val();
         var firstname = $('#fetchFirstName').val();
@@ -23,29 +27,16 @@
         var phone = $('#fetchPhone').val();
         var email = $('#fetchEmail').val();
 
-        var user = {
-            'username': username,
-            'password': password,
-            'firstname': firstname,
-            'lastname': lastname,
-            'role': role,
-            'email': email,
-            'phone': phone,
-            'dateOfBirth': dob
-        }
+        var user = new User(username,password,firstname,lastname,role,phone,email,dob);
         userService.createUser(user).then(findAllUsers());
-        
+
     }
 
-    function findAllUsers() {
-        var promise = fetch('http://localhost:8080/api/user');
-        promise.then(function(response){
-            return response.json();
-        }).then(renderUser);
-    }
+
 
     function renderUser(users) {
-        for(var i= 0; i<users.length;i++) {
+        tbody.empty();
+        for (var i = 0; i < users.length; i++) {
             var user = users[i];
             var clone = template.clone();
             clone.find('.username').html(user.username);
@@ -55,9 +46,9 @@
             clone.find('.role').html(user.role);
             clone.find('.dob').html(user.dateOfBirth);
             clone.find('.phone').html(user.phone);
-            clone.find('.email').html(user.email);      
+            clone.find('.email').html(user.email);
             tbody.append(clone);
-            $(clone).attr('id',user.id);            
+            $(clone).attr('id', user.id);
         }
     }
 })();
