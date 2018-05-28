@@ -21,6 +21,11 @@
         userId = url.searchParams.get('userId');
         findUserById(userId);
         $('#update').click(updateUser);
+        $('#logout').click(logOut);
+    }
+
+    function logOut() {
+        window.location = "http://localhost:8080/jquery/components/login/login.template.client.html";
     }
 
     function findUserById(id) {
