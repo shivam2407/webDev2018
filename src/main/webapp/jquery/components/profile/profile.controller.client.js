@@ -25,7 +25,7 @@
     }
 
     function logOut() {
-        window.location = "http://localhost:8080/jquery/components/login/login.template.client.html";
+        window.location = "https://sheltered-lake-69749.herokuapp.com/jquery/components/login/login.template.client.html";
     }
 
     function findUserById(id) {
