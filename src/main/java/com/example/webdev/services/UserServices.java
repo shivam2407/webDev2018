@@ -50,7 +50,7 @@ public class UserServices {
 	
 	@PostMapping("/api/register")
 	public User register(@RequestBody User user, HttpSession session) { 
-			return null;
+			return userRepository.save(user);
 	}
 
 
@@ -86,7 +86,7 @@ public class UserServices {
 	}
 
 	@PostMapping("/api/logout")
-	public User login(HttpSession session) {
+	public User logout(HttpSession session) {
 		return null;
 	}
 
