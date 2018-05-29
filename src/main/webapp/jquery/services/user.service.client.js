@@ -7,7 +7,7 @@ function userServiceClient() {
     this.updateUser = updateUser;
     this.register = register;
     this.login = login;
-    this.url = 'http://localhost:8080/api';
+    this.url = 'https://sheltered-lake-69749.herokuapp.com/api';
     var self = this;
 
     function register(user) {
