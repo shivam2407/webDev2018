@@ -27,11 +27,10 @@ public class UserServices {
 	@GetMapping("/api/user")
 	public List<User> findAllUser(){
 		return (List<User>)userRepository.findAll();
-		
 	}
 	
 	@PutMapping("api/user")
-	public boolean updateUser(@RequestBody User user) {
+	public boolean updateUser(@RequestBody User user, HttpSession session) {
 		Optional<User> data = userRepository.findById(user.getId());
 		if(data.isPresent()) {
 			User oldUser = data.get();
@@ -50,13 +49,17 @@ public class UserServices {
 	
 	@PostMapping("/api/register")
 	public User register(@RequestBody User user, HttpSession session) { 
-			return userRepository.save(user);
+			User newUser = userRepository.save(user);
+			session.setAttribute("user", user);
+			return newUser;
 	}
 
 
 	@PostMapping("/api/login")
 	public List<User> login(@RequestBody User user, HttpSession session) {	
-		return (List<User>) userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
+		List<User> userlist = (List<User>) userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
+		session.setAttribute("user", userlist.get(0));
+		return userlist;
 	}
 	
 	
@@ -80,10 +83,6 @@ public class UserServices {
 		return null;
 	}
 	
-	@PutMapping("/api/profile")
-	public User updateProfile(@RequestBody User user, HttpSession session) {
-		return null;
-	}
 
 	@PostMapping("/api/logout")
 	public User logout(HttpSession session) {

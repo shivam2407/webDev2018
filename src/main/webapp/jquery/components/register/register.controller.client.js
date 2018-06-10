@@ -32,7 +32,7 @@
     function route(user) {
         console.log("routhing");
         if(user){
-            window.location = 'https://sheltered-lake-69749.herokuapp.com/jquery/components/profile/profile.template.client.html?userId='+user.id;
+            window.location = 'http://localhost:8080/jquery/components/profile/profile.template.client.html?userId='+user.id;
         }
     }
 })();

@@ -19,7 +19,7 @@
 
     function route(response) {
         if(response.length==1){
-            window.location = 'https://sheltered-lake-69749.herokuapp.com/jquery/components/profile/profile.template.client.html?userId='+response[0].id;
+            window.location = 'http://localhost:8080/jquery/components/profile/profile.template.client.html?userId='+response[0].id;
         }
         else{
             alert('Incorrect Credentials');
